@@ -19,16 +19,16 @@ public class Serie {
         this.poster = datosSerie.poster();
         this.genero = Categoria.fromString(datosSerie.genero().split(",")[0].trim());   // trim() para que no traiga ningún valor vacío
         this.actores = datosSerie.actores();
-        this.sinopsis = datosSerie.sinopsis();
+        this.sinopsis = datosSerie.sinopsis();  //  ConsultaChatGPT.obtenerTraduccion(datosSerie.sinopsis())
     }
 
     @Override
     public String toString() {
-        return "titulo='" + titulo + '\'' +
+        return  "genero=" + genero +
+                ",titulo='" + titulo + '\'' +
                 ", totalTemporadas=" + totalTemporadas +
                 ", evaluacion=" + evaluacion +
                 ", poster='" + poster + '\'' +
-                ", genero=" + genero +
                 ", actores='" + actores + '\'' +
                 ", sinopsis='" + sinopsis + '\'';
     }
