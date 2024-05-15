@@ -22,7 +22,7 @@ public class Serie {
     private Categoria genero;
     private String actores;
     private String sinopsis;
-    @Transient                      // Para ignorar por ahora la lista de episodios
+    @OneToMany(mappedBy = "serie")      // para relacionar en la BD 1 a N con episodios
     private List<Episodio> episodios;
 
     public Serie(){}
@@ -46,6 +46,14 @@ public class Serie {
                 ", poster='" + poster + '\'' +
                 ", actores='" + actores + '\'' +
                 ", sinopsis='" + sinopsis + '\'';
+    }
+
+    public List<Episodio> getEpisodios() {
+        return episodios;
+    }
+
+    public void setEpisodios(List<Episodio> episodios) {
+        this.episodios = episodios;
     }
 
     public Long getId() {
