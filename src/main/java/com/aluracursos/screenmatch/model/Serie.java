@@ -22,9 +22,9 @@ public class Serie {
     private Categoria genero;
     private String actores;
     private String sinopsis;
-    @OneToMany(mappedBy = "serie")      // para relacionar en la BD 1 a N con episodios
-    private List<Episodio> episodios;
-
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)      // para relacionar en la BD 1 a N con episodios
+    private List<Episodio> episodios;               // cascade: indica que estamos haciendo los cambios en cascada, si hubo un cambio en Serie lo debe reflejar en Episodio y viceversa
+                                                    // Fetch: forma de cargar los episodios
     public Serie(){}
 
     public Serie(DatosSerie datosSerie){
@@ -45,7 +45,8 @@ public class Serie {
                 ", evaluacion=" + evaluacion +
                 ", poster='" + poster + '\'' +
                 ", actores='" + actores + '\'' +
-                ", sinopsis='" + sinopsis + '\'';
+                ", sinopsis='" + sinopsis + '\'' +
+                ", episodios='" + episodios;
     }
 
     public List<Episodio> getEpisodios() {
@@ -53,6 +54,7 @@ public class Serie {
     }
 
     public void setEpisodios(List<Episodio> episodios) {
+        episodios.forEach(e -> e.setSerie(this));   // Para cada episodio coloca la serie a la que pertenece (esta), así las claves extranjeras de episodios dejan de ser null
         this.episodios = episodios;
     }
 
