@@ -5,6 +5,7 @@ import com.aluracursos.screenmatch.model.Serie;
 import com.aluracursos.screenmatch.repositorio.SerieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import retrofit2.http.PUT;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,6 +21,10 @@ public class SerieService {
 
     public List<SerieDTO> obtenerTop5() {
         return convierteDatos(repository.findTop5ByOrderByEvaluacionDesc());
+    }
+
+    public List<SerieDTO> obtenerLansamientosMasRecientes(){
+        return convierteDatos(repository.lanzamientosMasRecientes());
     }
 
     public List<SerieDTO> convierteDatos(List<Serie> serie){
