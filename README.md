@@ -5,6 +5,7 @@ La aplicación consulta la API *omdb* para obtener los datos de las series y sus
 La primera parte del proyecto consiste en guardar los datos en la base de datos y realizar consultas personalizadas.
 En la segunda parte del proyecto una web usa esos datos aplicando todas las funcionalidades y agregando nuevas.
 
+
 ## 🔨 Objetivos del proyecto
 
 * Avanzar en el proyecto Screenmatch, iniciado en el primer curso de la formación, creando un menú con varias opciones;
